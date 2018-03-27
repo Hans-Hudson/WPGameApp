@@ -1,4 +1,4 @@
-package app.com.hudson.wpgame.ui.gamelist
+package app.com.hudson.wpgame.features.gamelist
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import app.com.hudson.wpgame.R
-import app.com.hudson.wpgame.ui.gamelist.gamelist.GameListFragment
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -29,20 +28,6 @@ class GameActivity : AppCompatActivity(), HasSupportFragmentInjector {
                     .add(R.id.game_list_container, GameListFragment())
                     .commit()
         }
-
-    }
-
-    fun isNetworkAvailable()  {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
-        return if (connectivityManager is ConnectivityManager){
-            val networkInfo = connectivityManager.activeNetworkInfo
-            networkInfo.isConnected
-
-            Toast.makeText(this, "" + networkInfo.isConnected, Toast.LENGTH_SHORT).show()
-        }else{
-            Toast.makeText(this, "deu ruim", Toast.LENGTH_SHORT).show()
-        }
-
 
     }
 

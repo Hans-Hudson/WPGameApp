@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.com.hudson.wpgame.ui.gamedetail.GameDetailActivity">
+    tools:context="app.com.hudson.wpgame.features.gamedetail.GameDetailActivity">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
@@ -20,7 +20,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:id="@+id/img_game_detail"
@@ -91,7 +92,8 @@
                 android:drawablePadding="8dp"
                 android:text="Canal Pakas"
                 tools:layout_editor_absoluteX="36dp"
-                tools:layout_editor_absoluteY="345dp" />
+                tools:layout_editor_absoluteY="345dp"
+                android:drawableStart="@drawable/channels" />
 
         </LinearLayout>
 

@@ -1,7 +1,7 @@
-package app.com.hudson.wpgame.ui.gamelist.gamelist
+package app.com.hudson.wpgame.features.gamelist
 
 import android.util.Log
-import app.com.hudson.wpgame.model.Game
+import app.com.hudson.wpgame.features.Game
 
 /**
  * Created by Hans on 24/03/2018.

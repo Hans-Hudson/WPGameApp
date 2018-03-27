@@ -1,8 +1,9 @@
-package app.com.hudson.wpgame.ui.gamedetail
+package app.com.hudson.wpgame.features.gamedetail
 
 import android.app.Activity
 import android.os.Bundle
 import app.com.hudson.wpgame.R
+import app.com.hudson.wpgame.features.isNetworkAvailableExtension
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import dagger.android.AndroidInjection
@@ -33,22 +34,26 @@ class GameDetailActivity : Activity(), GameDetailContract.View {
     }
 
     override fun bindTxt() {
-        tv_game_detail_name.text = intent.getStringExtra(GAME_NAME)
-        tv_game_detail_channel.text = intent.getStringExtra(GAME_CHANNELS) + " canais"
-        tv_game_detail_viewers.text = intent.getStringExtra(GAME_VIEWERS) + " espectadores"
+        val name = intent.getStringExtra(GAME_NAME)
+        val canal = intent.getStringExtra(GAME_CHANNELS) + " canais"
+        val viewers = intent.getStringExtra(GAME_VIEWERS) + " espectadores"
+
+        tv_game_detail_name.text = name
+        tv_game_detail_channel.text = "$canal canais"
+        tv_game_detail_viewers.text = "$viewers espectadores"
     }
 
     override fun getImageFromNetwork() {
         val gamePhoto = intent.getStringExtra(GAME_PHOTOS)
-//        Picasso.with(this).load(gamePhoto).into(img_game_detail)
+        Picasso.with(this).load(gamePhoto).into(img_game_detail)
     }
 
     override fun getImageFromCache() {
         val gamePhoto = intent.getStringExtra(GAME_PHOTOS)
-//        Picasso.with(this).load(gamePhoto).networkPolicy(NetworkPolicy.OFFLINE).into(img_game_detail)
+        Picasso.with(this).load(gamePhoto).networkPolicy(NetworkPolicy.OFFLINE).into(img_game_detail)
     }
 
     override fun isNetworkAvailable(): Boolean {
-        return this.isNetworkAvailable()
+        return isNetworkAvailableExtension()
     }
 }

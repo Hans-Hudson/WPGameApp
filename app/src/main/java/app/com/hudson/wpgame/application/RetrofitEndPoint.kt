@@ -1,6 +1,6 @@
-package app.com.hudson.wpgame.rest
+package app.com.hudson.wpgame.application
 
-import app.com.hudson.wpgame.model.Twitch
+import app.com.hudson.wpgame.features.Twitch
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers

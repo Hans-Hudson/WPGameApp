@@ -1,7 +1,6 @@
-package app.com.hudson.wpgame.ui.gamelist.gamelist
+package app.com.hudson.wpgame.features.gamelist
 
-import app.com.hudson.wpgame.model.Game
-import app.com.hudson.wpgame.model.Twitch
+import app.com.hudson.wpgame.features.Game
 
 /**
  * Created by Hans on 24/03/2018.
@@ -27,7 +26,6 @@ interface GameListContract {
     }
 
     interface Repository{
-//        fun getMovies() : Twitch?
-        fun getMovies(page: Int ,onSuccess: (MutableList<Game>) -> Unit, onError: (Throwable?) -> Unit)
+        fun getMovies(page: Int, onSuccess: (MutableList<Game>) -> Unit, onError: (Throwable?) -> Unit)
     }
 }

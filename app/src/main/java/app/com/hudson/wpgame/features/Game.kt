@@ -1,4 +1,4 @@
-package app.com.hudson.wpgame.model
+package app.com.hudson.wpgame.features
 
 import com.google.gson.annotations.SerializedName
 
@@ -10,4 +10,4 @@ import com.google.gson.annotations.SerializedName
 data class Twitch (var _total : String, var top : List<Game>) {}
 data class Game(@SerializedName("game")var gameMeta : GameMeta, var viewers : String, var channels : String) {}
 data class GameMeta (var name : String, @SerializedName("box") var gamePhotos: GamePhotos, var image : Int) {}
-data class GamePhotos (var small : String)
+data class GamePhotos (var large : String)

@@ -1,8 +1,6 @@
-package app.com.hudson.wpgame.ui.gamelist.gamelist
+package app.com.hudson.wpgame.features.gamelist
 
-import android.app.Activity
 import android.content.Context
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
@@ -13,8 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import app.com.hudson.wpgame.R
-import app.com.hudson.wpgame.model.Game
-import app.com.hudson.wpgame.ui.gamedetail.GameDetailActivity
+import app.com.hudson.wpgame.features.gamedetail.GameDetailActivity
+import app.com.hudson.wpgame.features.isNetworkAvailableExtension
+import app.com.hudson.wpgame.features.Game
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_game_list.*
 import org.jetbrains.anko.alert
@@ -86,11 +85,11 @@ class GameListFragment : Fragment(), GameListContract.View {
         activity?.startActivity<GameDetailActivity>(GameDetailActivity.GAME_NAME to game.gameMeta.name,
                                                              GameDetailActivity.GAME_VIEWERS to game.viewers,
                                                              GameDetailActivity.GAME_CHANNELS to game.channels,
-                                                             GameDetailActivity.GAME_PHOTOS to game.gameMeta.gamePhotos.small)
+                                                             GameDetailActivity.GAME_PHOTOS to game.gameMeta.gamePhotos.large)
     }
 
     override fun isNetworkAvailable() : Boolean {
-        return activity!!.isNetworkAvailable()
+        return activity!!.isNetworkAvailableExtension()
     }
 
 
@@ -99,15 +98,4 @@ class GameListFragment : Fragment(), GameListContract.View {
     }
 }
 
-fun Activity.isNetworkAvailable() : Boolean{
-    val cm = baseContext?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-    val networkInfo = cm.activeNetworkInfo
-
-    if (networkInfo != null && networkInfo.isConnected){
-        return true
-    }
-
-
-    return false
-}

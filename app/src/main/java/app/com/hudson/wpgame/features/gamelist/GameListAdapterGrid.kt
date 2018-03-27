@@ -1,11 +1,11 @@
-package app.com.hudson.wpgame.ui.gamelist.gamelist
+package app.com.hudson.wpgame.features.gamelist
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import app.com.hudson.wpgame.R
-import app.com.hudson.wpgame.model.Game
+import app.com.hudson.wpgame.features.Game
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.game_list_item.view.*
@@ -40,10 +40,10 @@ class GameListAdapterGrid(private val itemClick: (Game) -> Unit) : RecyclerView.
         fun bindGame(game: Game) {
             with(itemView) {
                 name_game.text = game.gameMeta.name
-//                Picasso.with(context).load(game.gameMeta.gamePhotos.small)
-//                        .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
-//                        .error(R.drawable.ic_broken_img)
-//                                      .into(img_game)
+                Picasso.with(context).load(game.gameMeta.gamePhotos.large)
+                        .networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE)
+                        .error(R.drawable.ic_broken_img)
+                                      .into(img_game)
                 setOnClickListener { itemClick(game) }
             }
         }
@@ -58,9 +58,4 @@ class GameListAdapterGrid(private val itemClick: (Game) -> Unit) : RecyclerView.
         this.gameList.clear()
         notifyDataSetChanged()
     }
-
-    fun datasetChanged(){
-        notifyDataSetChanged()
-    }
-
 }

@@ -2,13 +2,11 @@ package app.com.hudson.wpgame.application.dagger
 
 import android.content.Context
 import app.com.hudson.wpgame.application.MyApplication
-import app.com.hudson.wpgame.rest.RetrofitEndPoint
-import app.com.hudson.wpgame.ui.gamedetail.GameDetailActivity
-import app.com.hudson.wpgame.ui.gamedetail.GameDetailContract
-import app.com.hudson.wpgame.ui.gamedetail.GameDetailPresenter
-import app.com.hudson.wpgame.ui.gamelist.GameActivity
-import app.com.hudson.wpgame.ui.gamelist.gamelist.*
-import app.com.hudson.wpgame.ui.gamelist.gamelist.GameCache
+import app.com.hudson.wpgame.application.RetrofitEndPoint
+import app.com.hudson.wpgame.features.gamedetail.GameDetailActivity
+import app.com.hudson.wpgame.features.gamedetail.GameDetailContract
+import app.com.hudson.wpgame.features.gamedetail.GameDetailPresenter
+import app.com.hudson.wpgame.features.gamelist.*
 import dagger.Module
 import dagger.Provides
 import dagger.android.AndroidInjectionModule
@@ -17,6 +15,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+import app.com.hudson.wpgame.features.gamelist.GameCache
 
 /**
  * Created by Hans on 23/03/2018.
@@ -71,7 +70,7 @@ class GameListModule{
     fun provideView(view : GameListFragment) : GameListContract.View = view
 
     @Provides
-    fun providePresenter(view: GameListContract.View, source: GameListContract.Repository, cacheGame : GameCache ): GameListContract.Presenter {
+    fun providePresenter(view: GameListContract.View, source: GameListContract.Repository, cacheGame : GameCache): GameListContract.Presenter {
         return GameListPresenter(view, source, cacheGame)
     }
 

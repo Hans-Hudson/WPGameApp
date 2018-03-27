@@ -1,4 +1,4 @@
-package app.com.hudson.wpgame.ui.gamedetail
+package app.com.hudson.wpgame.features.gamedetail
 
 /**
  * Created by SlowMotion on 26/03/2018.
@@ -14,6 +14,8 @@ class GameDetailPresenter(private val view : GameDetailContract.View) : GameDeta
     fun bindImageLogic(){
         if (view.isNetworkAvailable()){
             view.getImageFromNetwork()
+        }else{
+            view.getImageFromCache()
         }
     }
 }

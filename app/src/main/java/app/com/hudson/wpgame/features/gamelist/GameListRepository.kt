@@ -1,8 +1,8 @@
-package app.com.hudson.wpgame.ui.gamelist.gamelist
+package app.com.hudson.wpgame.features.gamelist
 
-import app.com.hudson.wpgame.model.Game
-import app.com.hudson.wpgame.model.Twitch
-import app.com.hudson.wpgame.rest.RetrofitEndPoint
+import app.com.hudson.wpgame.features.Game
+import app.com.hudson.wpgame.features.Twitch
+import app.com.hudson.wpgame.application.RetrofitEndPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,10 +23,9 @@ class GameListRepository(private val api: RetrofitEndPoint
             }
 
             override fun onResponse(call: Call<Twitch>?, response: Response<Twitch>?) {
-                var twitch: Twitch
                 if (response?.body() != null) {
                     if (response.isSuccessful) {
-                        response?.body()?.let {
+                        response.body()?.let {
 
                             if (page != 0) {
                                 gameCache.store(it.top.toMutableList())
